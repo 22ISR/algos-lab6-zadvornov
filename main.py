@@ -1,3 +1,5 @@
+import random 
+
 """
 Практическая работа: Создание игры «Виселица»
 
@@ -83,7 +85,7 @@ HANGMANPICS = [
   +---+
   |   |
   O   |
- /|\\  |
+ /|\  |
       |
       |
 =========""",
@@ -91,7 +93,7 @@ HANGMANPICS = [
   +---+
   |   |
   O   |
- /|\\  |
+ /|\  |
  /    |
       |
 =========""",
@@ -99,8 +101,8 @@ HANGMANPICS = [
   +---+
   |   |
   O   |
- /|\\  |
- / \\  |
+ /|\  |
+ / \  |
       |
 =========""",
 ]
@@ -202,3 +204,26 @@ COMMON_NOUNS = [
     "участие",
 ]
 
+
+answer = list(random.choice(COMMON_NOUNS))
+print("".join(answer))
+
+count = 7
+while True:
+    print(f"В ващем слове {len(answer)} букв")
+    playfield = []
+    for i in answer: 
+        playfield.append("_")
+    user_letter = input("Введите букву: ")   
+    print(f'слово: {"".join(playfield)}')
+
+    if len(user_letter) > 1:
+        print("Неверное количество букв в слове!")
+        continue
+
+    for i in range(len(answer)):
+        if user_letter[i] == answer[i]:
+            li = list(playfield)
+            li[i] = user_letter[i]
+            playfield = "".join[li]
+             
